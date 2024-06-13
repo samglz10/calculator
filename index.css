@@ -1,0 +1,39 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+h1{
+    background-color: #ffc400;
+}
+
+h3{
+    background-color: rgb(138, 232, 255);
+    height: 25%;
+    width: 50%;
+    display: flex;
+    text-align: right;
+    justify-content: end;
+}
+
+.calculator-container{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.btn {
+    height: 100px;
+    width: 100px;
+    font-size: x-large;
+}
+ul{
+    list-style: none;
+}
