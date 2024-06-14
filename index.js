@@ -6,7 +6,7 @@ let x = 4;
 let y = 4;
 let currentOperation = '';
 
-const numbers = [0,1,2,3,4,5,6,7,8,9];
+const numbers = [1,2,3,4,5,6,7,8,9,0];
 const operations=['Clear','Back', '+','-','/','*','=']
 
 numbers.forEach((number)=>{
@@ -15,24 +15,21 @@ numbers.forEach((number)=>{
     digit.innerText = number;
     digit.className = 'btn'
     digits.appendChild(digit)
-
 })
 operations.forEach((operation)=>{
     let op = document.createElement("button");
     op.innerText = operation;
     op.className = 'btn'
-    operationBtns.appendChild(op)
-
-
+    operationBtns.appendChild(op);
 })
 //need to redo step 3
 const operate = (operation, x,y)=>{
-console.log(typeof operation)
+console.log(x,operation[3],y);
     //console.log(`${x}${operation}${y}`)
 
 }
 
-operate(operation,x,y)
+operate(operations,x,y)
 
 
 
