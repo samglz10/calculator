@@ -1,38 +1,77 @@
 const calculator = document.getElementById("calculator-container");
 const digits = document.getElementById('digits')
 const operationBtns = document.getElementById('operations')
+const display = document.getElementById('display')
+
 let total = 0;
 let x = 4;
 let y = 4;
 let currentOperation = '';
+let displayArray = [];
 
 const numbers = [1,2,3,4,5,6,7,8,9,0];
 const operations=['Clear','Back', '+','-','/','*','=']
 
+const operators = {
+    '+': (x,y)=>x+y,
+    '-': (x, y) => x - y,
+    '*': (x, y) => x * y,
+    '/': (x, y) => x / y
+}
+
+//numbers on screen
 numbers.forEach((number)=>{
-    console.log(number);
+    //console.log(number);
     let digit = document.createElement("button");
     digit.innerText = number;
-    digit.className = 'btn'
-    digits.appendChild(digit)
+    digit.className = 'btn';
+    digit.id = `numberBtn`;
+    digit.value = number;
+    digits.appendChild(digit);
 })
+
+//operators on screen
 operations.forEach((operation)=>{
     let op = document.createElement("button");
     op.innerText = operation;
     op.className = 'btn'
+    op.value = operation.toString();
     operationBtns.appendChild(op);
 })
 //need to redo step 3
-const operate = (operation, x,y)=>{
-console.log(x,operation[3],y);
-    //console.log(`${x}${operation}${y}`)
+const caluculate = (operators, x,y)=>{
+
+    console.log(operators['/'](x,y))
 
 }
 
-operate(operations,x,y)
+caluculate(operators,x,y);
 
 
+operationBtns.addEventListener('click',(e)=>{
+    console.log(e.target.value);
+    if(e.target.value === operations[0]){
+        displayArray =[];
+        display.innerText= displayArray;
+        console.log(displayArray)
+    }
+    if(e.target.value === operations[1]){
+        displayArray.pop();
+        display.innerText = displayArray.join('')
+    }
+})
 
+
+digits.addEventListener('click',(e)=>{
+    if(e.target.value === undefined){
+        return
+    }
+    displayArray.push(e.target.value)
+    //console.log(e.target.value)
+
+    display.innerText= displayArray.join('');
+    console.log
+})
 /*
 const add = (x,y)=> {
     console.log(`${x}+${y} = ${x + y}`)
@@ -53,11 +92,12 @@ const divide = (x,y) => {
     console.log(`${x}/${y} = ${x / y}`)
     console.log(x / y)
 };
+/*
 const power = function() {
 	
 };
 
 const factorial = function() {
 	
-};
+}
 */
