@@ -21,6 +21,7 @@ h3{
     justify-content: end;
     font-size: xx-large;
     margin: 0;
+    overflow-x: auto;
 }
 
 #calculator-container{

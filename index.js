@@ -9,6 +9,7 @@ let y = 4;
 let currentOperation = '';
 let displayArray = [];
 
+
 const numbers = [1,2,3,4,5,6,7,8,9,0];
 const operations=['Clear','Back', '+','-','/','*','=']
 
@@ -35,13 +36,14 @@ operations.forEach((operation)=>{
     let op = document.createElement("button");
     op.innerText = operation;
     op.className = 'btn'
+    //op.id = `${operation}`;
     op.value = operation.toString();
     operationBtns.appendChild(op);
 })
 //need to redo step 3
 const caluculate = (operators, x,y)=>{
 
-    console.log(operators['/'](x,y))
+    //console.log(operators['/'](x,y))
 
 }
 
@@ -49,16 +51,24 @@ caluculate(operators,x,y);
 
 
 operationBtns.addEventListener('click',(e)=>{
+    if(e.target.value === undefined){
+        return
+    }
     console.log(e.target.value);
     if(e.target.value === operations[0]){
         displayArray =[];
         display.innerText= displayArray;
-        console.log(displayArray)
     }
     if(e.target.value === operations[1]){
         displayArray.pop();
         display.innerText = displayArray.join('')
     }
+    if(e.target.value === operations[0]|| e.target.value === operations[1]|| e.target.value === operations[6]){
+        return 0
+    }
+    displayArray.push(e.target.value)
+    display.innerText = displayArray.join('');
+    console.log(displayArray)
 })
 
 
@@ -68,10 +78,11 @@ digits.addEventListener('click',(e)=>{
     }
     displayArray.push(e.target.value)
     //console.log(e.target.value)
-
-    display.innerText= displayArray.join('');
-    console.log
+    display.innerText = displayArray.join('');
+    
 })
+
+console.log(displayArray)
 /*
 const add = (x,y)=> {
     console.log(`${x}+${y} = ${x + y}`)
